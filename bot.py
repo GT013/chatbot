@@ -14,6 +14,3 @@ def wit_response(message_text):
 		pass
 
 	return (entity)
-
-#resp = client.message("ขอบคุณ")
-#print(resp)
