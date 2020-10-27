@@ -1,6 +1,6 @@
 from wit import Wit
 
-wit_access_token = "HCEFKTG6MGSPZQBZDTCYA7GUDM5JBNXF"
+wit_access_token = "32XITT53VFSLFD6MDFSZ455DDCBXY4FN"
 client = Wit(access_token=wit_access_token)
 
 def wit_response(message_text):
@@ -14,3 +14,6 @@ def wit_response(message_text):
 		pass
 
 	return (entity)
+
+#resp = client.message("สวัสดีค่ะ")
+#print(resp)

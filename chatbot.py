@@ -47,7 +47,6 @@ def webhook():
 						response = "ด้วยความยินดีค่ะ"
 					elif entity == 'Hello:Hello':
 						response = "สวัสดีค่ะ สอบถามเรื่องอะไรคะ ทุนการศึกษา/การกู้ กยศ."
-
 					elif entity == 'study:study':
 						response = "สามารถเข้าไปดูได้ที่ 	https://office.kmitl.ac.th/osda/kmitl/ทุนสนับสนุนการศึกษา/#1563854022569-d50c8d0b-0222"
 					
