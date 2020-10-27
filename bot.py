@@ -9,11 +9,10 @@ def wit_response(message_text):
 	entity = None
 	
 	try:
-		entity = resp['entities'][0]
+		entity = list(resp['entities'])[0]
 	except:
 		pass
 
 	return (entity)
 
-#resp = client.message("สวัสดีค่ะ")
-#print(resp)
+#print(wit_response("สวัสดีค่ะ"))
