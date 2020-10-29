@@ -15,4 +15,4 @@ def wit_response(message_text):
 
 	return (entity)
 
-#print(wit_response("ทุนสองค่ะกับทุน1"))
+#print(wit_response("สวัสดีค่ะ อยากทราบว่าสถาบันมีทุนอะไรบ้างคะ"))
