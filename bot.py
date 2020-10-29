@@ -1,6 +1,6 @@
 from wit import Wit
 
-wit_access_token = "32XITT53VFSLFD6MDFSZ455DDCBXY4FN"
+wit_access_token = "6VK62DOSFZVG5G3NUFOPI5LRPAIQTLVT"
 client = Wit(access_token=wit_access_token)
 
 def wit_response(message_text):
@@ -15,4 +15,4 @@ def wit_response(message_text):
 
 	return (entity)
 
-#print(wit_response("สวัสดีค่ะ"))
+#print(wit_response("ทุนสองค่ะกับทุน1"))
