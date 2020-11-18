@@ -7,17 +7,19 @@ def wit_response(message_text):
 	
 	resp = client.message(message_text)
 	entity = None
-	#intents = None
+	intents = None
+	#value = None
 	try:
 		#entity = list(resp['entities'])[0]
 		entity = list(resp['entities'])[0]
-		#intents = list(resp['intents'])[0][1]
+		intents = resp['intents'][0]['name']
+		#value = resp['entities'][entity][0]['name']
 	except:
 		pass
 
-	return (entity)
+	return (entity,intents)
 
-print(wit_response("1"))
+#print(wit_response("88"))
 
-#resp = client.message("กำหนดการการกู้กยศ.")
+#resp = client.message("1")
 #print(resp)

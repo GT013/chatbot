@@ -30,7 +30,6 @@ def webhook():
 		for entry in data['entry']:
 			for messaging_event in entry['messaging']:
 
-				
 				sender_id = messaging_event['sender']['id']
 
 				if messaging_event.get('message'):
@@ -39,16 +38,16 @@ def webhook():
 						messaging_text = messaging_event['message']['text']
 					else:
 						messaging_text = 'no text'
-						response = None	
+					response = None	
 
-					entity = wit_response(messaging_text)
-					if entity == 'greeting:greeting':
+					entity,intents = wit_response(messaging_text)
+					if entity == 'greeting:greeting' and intents == 'greeting':
 						response = "1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาเลือกหมายเลขที่ต้องการจะสอบถาม"
-					elif entity == 'one:one':
+					elif entity == 'one:one' and intents == 'number':
 						response = "เยอะแยะมากมาย"
-					elif entity == 'two:two':
+					elif entity == 'two:two' and intents == 'number':
 						response = "ทุนกยศ.\n1.คุณสมบัติสำหรับการขอกู้กยศ.\n2.รายละเอียดของทุนกยศ.\n3.เอกสารประกอบการกู้กยศ.\n4.กำหนดการการกู้กยศ."
-					elif entity == 'three:three':
+					elif entity == 'three:three' and intents == 'number':
 						response = "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะ\nหรือติดต่อได้ที่ 02-xxxxx"
 					#elif entity == 'KYS:KYS':
 					#	response = "ทุนกยศ.\n1.คุณสมบัติสำหรับการขอกู้กยศ.\n2.รายละเอียดของทุนกยศ.\n3.เอกสารประกอบการกู้กยศ.\n4.กำหนดการการกู้กยศ.\nกรุณาเลือกหัวข้อที่ต้องการจะสอบถาม เช่น อยากรู้เอกสารการกู้กยศ."
@@ -60,7 +59,7 @@ def webhook():
 					#	response = "สามารถดูรายละเอียดได้ที่ \nhttps://office.kmitl.ac.th/osda/studentloan/#1562124714078-a8a6b529-77ac"
 					#elif entity == 'time_of_k:time_of_k':
 					#	response = "สามารถติดตามกำหนดการได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751146-e22dcd72-ed5d"
-					elif response == None:
+					if entity == None or intents == None:
 						response = "ว่าง"
 						
 					bot.send_text_message(sender_id, response)
