@@ -39,24 +39,29 @@ def webhook():
 						messaging_text = messaging_event['message']['text']
 					else:
 						messaging_text = 'no text'
-
-					response = None
+						response = None	
 
 					entity = wit_response(messaging_text)
 					if entity == 'greeting:greeting':
-						response = "1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.เรื่องอื่น ๆ\nกรุณาเลือกหัวข้อที่ต้องการจะสอบถาม เช่น อยากถามเรื่องอื่นๆค่ะ"
-					elif entity == 'KYS:KYS':
-						response = "ทุนกยศ.\n1.คุณสมบัติสำหรับการขอกู้กยศ.\n2.รายละเอียดของทุนกยศ.\n3.เอกสารประกอบการกู้กยศ.\n4.กำหนดการการกู้กยศ.\nกรุณาเลือกหัวข้อที่ต้องการจะสอบถาม เช่น อยากรู้เอกสารการกู้กยศ."
-					elif entity == 'property_of_k:property_of_k':
-						response = "สามารถดูรายละเอียดได้ที่ https://office.kmitl.ac.th/osda/studentloan/"
-					elif entity == 'detail_of_k:detail_of_k':
-						response = "กยศ. ลักษณะที่ 1 ขาดแคลนทุนทรัพย์\n-ค่าธรรมเนียมการศึกษา (2 ภาคการศึกษา)\n-ค่าครองชีพ 2,400 บาท/เดือน *ตามที่นักศึกษาประสงค์ขอกู้ยืม\n-กยศ. ลักษณะที่ 2\n-ศึกษาในสาขาวิชาที่เป็นความต้องการหลักซึ่งมีความชัดเจนของการผลิตกำลังคนและมีความจำเป็นต่อการพัฒนาประเทศ\n-ค่าธรรมเนียมการศึกษา (2 ภาคการศึกษา) \n-ค่าครองชีพ 2,400 บาท/เดือน *หากจะกู้ยืมค่าครองชีพ จะต้องเป็นผู้มีรายได้รวมของครอบครัวไม่เกิน 200,000 บาทต่อปี"
-					elif entity == 'dcm_of_k:dcm_of_k':
-						response = "สามารถดูรายละเอียดได้ที่ \nhttps://office.kmitl.ac.th/osda/studentloan/#1562124714078-a8a6b529-77ac"
-					elif entity == 'time_of_k:time_of_k':
-						response = "สามารถติดตามกำหนดการได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751146-e22dcd72-ed5d"
-					if response == None:
-						response = "รอแอดมินตอบกลับนะคะ"
+						response = "1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาเลือกหมายเลขที่ต้องการจะสอบถาม"
+					elif entity == 'one:one':
+						response = "เยอะแยะมากมาย"
+					elif entity == 'two:two':
+						response = "ทุนกยศ.\n1.คุณสมบัติสำหรับการขอกู้กยศ.\n2.รายละเอียดของทุนกยศ.\n3.เอกสารประกอบการกู้กยศ.\n4.กำหนดการการกู้กยศ."
+					elif entity == 'three:three':
+						response = "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะ\nหรือติดต่อได้ที่ 02-xxxxx"
+					#elif entity == 'KYS:KYS':
+					#	response = "ทุนกยศ.\n1.คุณสมบัติสำหรับการขอกู้กยศ.\n2.รายละเอียดของทุนกยศ.\n3.เอกสารประกอบการกู้กยศ.\n4.กำหนดการการกู้กยศ.\nกรุณาเลือกหัวข้อที่ต้องการจะสอบถาม เช่น อยากรู้เอกสารการกู้กยศ."
+					#elif entity == 'property_of_k:property_of_k':
+					#	response = "สามารถดูรายละเอียดได้ที่ https://office.kmitl.ac.th/osda/studentloan/"
+					#elif entity == 'detail_of_k:detail_of_k':
+					#	response = "กยศ. ลักษณะที่ 1 ขาดแคลนทุนทรัพย์\n-ค่าธรรมเนียมการศึกษา (2 ภาคการศึกษา)\n-ค่าครองชีพ 2,400 บาท/เดือน *ตามที่นักศึกษาประสงค์ขอกู้ยืม\n-กยศ. ลักษณะที่ 2\n-ศึกษาในสาขาวิชาที่เป็นความต้องการหลักซึ่งมีความชัดเจนของการผลิตกำลังคนและมีความจำเป็นต่อการพัฒนาประเทศ\n-ค่าธรรมเนียมการศึกษา (2 ภาคการศึกษา) \n-ค่าครองชีพ 2,400 บาท/เดือน *หากจะกู้ยืมค่าครองชีพ จะต้องเป็นผู้มีรายได้รวมของครอบครัวไม่เกิน 200,000 บาทต่อปี"
+					#elif entity == 'dcm_of_k:dcm_of_k':
+					#	response = "สามารถดูรายละเอียดได้ที่ \nhttps://office.kmitl.ac.th/osda/studentloan/#1562124714078-a8a6b529-77ac"
+					#elif entity == 'time_of_k:time_of_k':
+					#	response = "สามารถติดตามกำหนดการได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751146-e22dcd72-ed5d"
+					elif response == None:
+						response = "ว่าง"
 						
 					bot.send_text_message(sender_id, response)
 
