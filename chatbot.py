@@ -53,7 +53,7 @@ def webhook():
 					elif entity == 'two:two' and intents == 'number':
 						response = "ทุนกยศ.\nK1.คุณสมบัติสำหรับการขอกู้กยศ.\nK2.รายละเอียดของทุนกยศ.\nK3.เอกสารประกอบการกู้กยศ.\nK4.กำหนดการการกู้กยศ."
 					elif entity == 'three:three' and intents == 'number':
-						response = "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะ\nหรือติดต่อได้ที่ 02-xxxxx"
+						response = "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
 					elif entity == 'P_K:P_K' and intents == 'property_KYS':
 						response = "ติดตามรายละเอียดเพิ่มเติมได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751617-557051c0-5791"
 					elif entity == 'D_K:D_K' and intents == 'detail_KYS':
