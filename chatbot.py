@@ -41,12 +41,17 @@ def webhook():
 					response = None	
 
 					entity,intents = wit_response(messaging_text)
+
 					if entity == 'greeting:greeting' and intents == 'greeting':
 						response = "1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาเลือกหมายเลขที่ต้องการจะสอบถาม"
 					elif entity == 'one:one' and intents == 'number':
-						response = "เยอะแยะมากมาย"
+						response = "ทุนต่าง ๆ ของสถาบัน\nS1.ทุนเรียนดี-ทุนนำเสนอผลงาน\nS2.ทุนสนับสนุนการศึกษา\nกรุณาเลือกหัวข้อตัวเลขที่ต้องการจะสอบถาม เช่น S1\nหรืออ่านรายละเอียดทุนเพิ่มเติมได้ที่\nhttps://office.kmitl.ac.th/osda/kmitl/#1573006604624-d5ec5ed1-4c6a"
+					elif entity == 'S1:S1' and intents == 'sec_1':
+						response = "ทุนเรียนดี-ทุนนำเสนอผลงาน\nT1.ทุนเรียนดี\nT2.ทุนผู้สร้างชื่อเสียงในนามสถาบัน\nT3.ทุนผู้ทำคุณประโยชน์ให้แก่สถาบัน\nT4.ทุนสนับสนุนการนำเสนอผลงานวิชาการ\nT5.ทุนสนับสนุนการแลกเปลี่ยนและฝึกงานต่างประเทศ"
+					elif entity == 'S2:S2' and intents == 'sec_1':
+						response = "ทุนสนับสนุนการศึกษา\nE1.ทุนอุดหนุนการศึกษาประเภท ก.\nE2.ทุนอุดหนุนการศึกษาประเภท ข.\nE3.ทุนสนับสนุนนักศึกษาในภาวะวิกฤติ\nE4.ทุนให้ยืมเพื่อการศึกษากรณีฉุกเฉิน\nE5.ทุนช่วยเหลือนักศึกษาในสถานการณ์การแพร่ระบาดของโรค COVID 19"
 					elif entity == 'two:two' and intents == 'number':
-						response = "ทุนกยศ.\n1.คุณสมบัติสำหรับการขอกู้กยศ.\n2.รายละเอียดของทุนกยศ.\n3.เอกสารประกอบการกู้กยศ.\n4.กำหนดการการกู้กยศ."
+						response = "ทุนกยศ.\nK1.คุณสมบัติสำหรับการขอกู้กยศ.\nK2.รายละเอียดของทุนกยศ.\nK3.เอกสารประกอบการกู้กยศ.\nK4.กำหนดการการกู้กยศ."
 					elif entity == 'three:three' and intents == 'number':
 						response = "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะ\nหรือติดต่อได้ที่ 02-xxxxx"
 					elif entity == 'P_K:P_K' and intents == 'property_KYS':
@@ -60,7 +65,7 @@ def webhook():
 					elif entity == 'T_K:T_K':
 						response = "สามารถติดตามกำหนดการได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751146-e22dcd72-ed5d"
 					elif entity == None or intents == None:
-						response = "ว่าง"
+						response = None
 						
 					bot.send_text_message(sender_id, response)
 
