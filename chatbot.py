@@ -54,15 +54,15 @@ def webhook():
 						response = "ทุนกยศ.\nK1.คุณสมบัติสำหรับการขอกู้กยศ.\nK2.รายละเอียดของทุนกยศ.\nK3.เอกสารประกอบการกู้กยศ.\nK4.กำหนดการการกู้กยศ."
 					elif entity == 'three:three' and intents == 'number':
 						response = "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
-					elif entity == 'P_K:P_K' and intents == 'property_KYS':
+					elif entity == 'P_K:P_K' and intents == 'property_KYS' or entity == 'k1:k1' and intents == 'T_KYS':
 						response = "ติดตามรายละเอียดเพิ่มเติมได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751617-557051c0-5791"
-					elif entity == 'D_K:D_K' and intents == 'detail_KYS':
+					elif entity == 'D_K:D_K' and intents == 'detail_KYS' or entity == 'k2:k2' and intents == 'T_KYS':
 						response = "กยศ. ลักษณะที่ 1 ขาดแคลนทุนทรัพย์\n-ค่าธรรมเนียมการศึกษา (2 ภาคการศึกษา)\n-ค่าครองชีพ 2,400 บาท/เดือน *ตามที่นักศึกษาประสงค์ขอกู้ยืม\n-กยศ. ลักษณะที่ 2\n-ศึกษาในสาขาวิชาที่เป็นความต้องการหลักซึ่งมีความชัดเจนของการผลิตกำลังคนและมีความจำเป็นต่อการพัฒนาประเทศ\n-ค่าธรรมเนียมการศึกษา (2 ภาคการศึกษา) \n-ค่าครองชีพ 2,400 บาท/เดือน *หากจะกู้ยืมค่าครองชีพ จะต้องเป็นผู้มีรายได้รวมของครอบครัวไม่เกิน 200,000 บาทต่อปี\nอ่านรายละเอียดเพิ่มเติมได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124714090-5249f1f4-4a57"
-					elif entity == 'Do_K:Do_K' and intents == 'Document_KYS':
+					elif entity == 'Do_K:Do_K' and intents == 'Document_KYS' or entity == 'k3:k3' and intents == 'T_KYS':
 						response = "สามารถดูรายละเอียดได้ที่ \nhttps://office.kmitl.ac.th/osda/studentloan/#1562124714078-a8a6b529-77ac"
 					#elif entity == 'dcm_of_k:dcm_of_k':
 					#	response = "สามารถดูรายละเอียดได้ที่ \nhttps://office.kmitl.ac.th/osda/studentloan/#1562124714078-a8a6b529-77ac"
-					elif entity == 'T_K:T_K':
+					elif entity == 'T_K:T_K' or entity == 'k4:k4' and intents == 'T_KYS':
 						response = "สามารถติดตามกำหนดการได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751146-e22dcd72-ed5d"
 					elif entity == None or intents == None:
 						response = None
