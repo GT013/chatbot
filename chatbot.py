@@ -49,7 +49,7 @@ def webhook():
                             if inform['entity'] == entity and inform['intents'] == intents:
                                response = inform['response']
                                break
-                            elif entity == None and intents == None:
+                            else:
                                 response = "แชทบอทสวัสดีค่ะ\n1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาเลือกหมายเลขที่ต้องการจะสอบถาม"                        
                     
                     bot.send_text_message(sender_id, response)
