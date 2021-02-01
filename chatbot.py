@@ -48,8 +48,12 @@ def webhook():
                         for inform in obj:
                             if inform['entity'] == entity and inform['intents'] == intents:
                                response = inform['response']
-                            else:
-                                response = "แชทบอทสวัสดีค่ะ 1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาเลือกหมายเลขที่ต้องการจะสอบถาม"                        
+                               break
+                            elif entity == None and intents == None:
+                                response = "แชทบอทสวัสดีค่ะ\n1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาเลือกหมายเลขที่ต้องการจะสอบถาม"                        
+                    
+                    bot.send_text_message(sender_id, response)
+                    
                     # elif entity == 'P_K:P_K' and intents == 'property_KYS' or entity == 'k1:k1' and intents == 'T_KYS':
                         # response = "ติดตามรายละเอียดเพิ่มเติมได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751617-557051c0-5791"
                     # elif entity == 'D_K:D_K' and intents == 'detail_KYS' or entity == 'k2:k2' and intents == 'T_KYS':
@@ -58,10 +62,10 @@ def webhook():
                         # response = "สามารถดูรายละเอียดเอกสารที่ต้องใช้ได้ที่ \nhttps://office.kmitl.ac.th/osda/studentloan/#1562124714078-a8a6b529-77ac"
                     # elif entity == 'dcm_of_k:dcm_of_k':
                     # response = "สามารถดูรายละเอียดได้ที่ \nhttps://office.kmitl.ac.th/osda/studentloan/#1562124714078-a8a6b529-77ac"
-                    # elif entity == 'T_K:T_K' or entity == 'k4:k4' and intents == 'T_KYS':
-                        # response = "สามารถติดตามกำหนดการได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751146-e22dcd72-ed5d"
+                    #elif entity == 'T_K:T_K' or entity == 'k4:k4' and intents == 'T_KYS':
+                    #response = "สามารถติดตามกำหนดการได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751146-e22dcd72-ed5d"
 
-                    bot.send_text_message(sender_id, response)
+                            
 
     return "ok", 200
 
