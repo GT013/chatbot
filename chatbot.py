@@ -35,31 +35,21 @@ def webhook():
                 sender_id = messaging_event['sender']['id']
 
                 if messaging_event.get('message'):
-
+                    
                     if 'text' in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
                     else:
                         messaging_text = 'no text'
                     response = None
-
                     entity, intents = wit_response(messaging_text)
-
-					
-                    if entity == None or intents == None:
-                        response = None
-
-                    # if entity == 'greeting:greeting' and intents == 'greeting':
-                        #response = "1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาเลือกหมายเลขที่ต้องการจะสอบถาม"
-                    # elif entity == 'one:one' and intents == 'number':
-                        # response = "ทุนต่าง ๆ ของสถาบัน\nS1.ทุนเรียนดี-ทุนนำเสนอผลงาน\nS2.ทุนสนับสนุนการศึกษา\nกรุณาเลือกหัวข้อตัวเลขที่ต้องการจะสอบถาม เช่น S1\nหรืออ่านรายละเอียดทุนเพิ่มเติมได้ที่\nhttps://office.kmitl.ac.th/osda/kmitl/#1573006604624-d5ec5ed1-4c6a"
-                    # elif entity == 'S1:S1' and intents == 'sec_1':
-                        #response = "ทุนเรียนดี-ทุนนำเสนอผลงาน\n1.ทุนเรียนดี\n2.ทุนผู้สร้างชื่อเสียงในนามสถาบัน\n3.ทุนผู้ทำคุณประโยชน์ให้แก่สถาบัน\n4.ทุนสนับสนุนการนำเสนอผลงานวิชาการ\n5.ทุนสนับสนุนการแลกเปลี่ยนและฝึกงานต่างประเทศ\nสามารถดูเงื่อนไขหรือรายละเอียดของทุนเรียนดี-ทุนนำเสนอผลงานทุกประเภทได้ที่\nhttps://office.kmitl.ac.th/osda/kmitl/ทุนเรียนดี-ทุนนำเสนอผลง/"
-                    # elif entity == 'S2:S2' and intents == 'sec_1':
-                        #response = "ทุนสนับสนุนการศึกษา\n1.ทุนอุดหนุนการศึกษาประเภท ก.\n2.ทุนอุดหนุนการศึกษาประเภท ข.\n3.ทุนสนับสนุนนักศึกษาในภาวะวิกฤติ\n4.ทุนให้ยืมเพื่อการศึกษากรณีฉุกเฉิน\n5.ทุนช่วยเหลือนักศึกษาในสถานการณ์การแพร่ระบาดของโรค COVID 19\nสามารถดูเงื่อนไขหรือรายละเอียดของทุนสนับสนุนการศึกษาทุกประเภทได้ที่\nhttps://office.kmitl.ac.th/osda/kmitl/ทุนสนับสนุนการศึกษา/"
-                    # elif entity == 'two:two' and intents == 'number':
-                        #response = "ทุนกยศ.\nK1.คุณสมบัติสำหรับการขอกู้กยศ.\nK2.รายละเอียดของทุนกยศ.\nK3.เอกสารประกอบการกู้กยศ.\nK4.กำหนดการการกู้กยศ."
-                    # elif entity == 'three:three' and intents == 'number':
-                        #response = "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
+                    
+                    with open('inform.json',encoding='utf8') as f:
+                        obj = json.load(f)
+                        for inform in obj:
+                            if inform['entity'] == entity and inform['intents'] == intents:
+                               response = inform['response']
+                            else:
+                                response = "แชทบอทสวัสดีค่ะ 1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาเลือกหมายเลขที่ต้องการจะสอบถาม"                        
                     # elif entity == 'P_K:P_K' and intents == 'property_KYS' or entity == 'k1:k1' and intents == 'T_KYS':
                         # response = "ติดตามรายละเอียดเพิ่มเติมได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751617-557051c0-5791"
                     # elif entity == 'D_K:D_K' and intents == 'detail_KYS' or entity == 'k2:k2' and intents == 'T_KYS':
