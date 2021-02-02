@@ -63,10 +63,9 @@ def webhook():
                             #if messaging_event.get('message'):
                                 #response = "แล้วจะติดต่อกลับให้เร็วที่สุดค่ะ ^^"
                         else:
-                            response = random.choice(["ลองพิมพ์ 'สวัสดี'","ทักทายค่ะ ^^ ลองพิมพ์ว่า'ดีจ้า'"])                         
-                            break
+                            response = "ลองพิมพ์ 'สวัสดี'"                        
 
-                    bot.send_text_message(sender_id, response)
+                        bot.send_text_message(sender_id, response)
 
                     
                     # elif entity == 'P_K:P_K' and intents == 'property_KYS' or entity == 'k1:k1' and intents == 'T_KYS':
