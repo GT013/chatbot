@@ -65,7 +65,7 @@ def webhook():
                         else:
                             response = "ลองพิมพ์ 'สวัสดี'"                        
 
-                        bot.send_text_message(sender_id, response)
+                    bot.send_text_message(sender_id, response)
 
                     
                     # elif entity == 'P_K:P_K' and intents == 'property_KYS' or entity == 'k1:k1' and intents == 'T_KYS':
