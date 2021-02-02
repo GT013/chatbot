@@ -41,7 +41,7 @@
     },
     {
         "entity" : {"E1":"k4:k4","E2":"T_K:T_K"},
-        "intents" :{"I1":"T_KYS","I2":"Document_KYS"},
+        "intents" :{"I1":"T_KYS","I2":"time_KYS"},
         "response" : "สามารถติดตามกำหนดการได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751146-e22dcd72-ed5d"
     }, 
     {
