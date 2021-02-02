@@ -58,15 +58,15 @@ def webhook():
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
                             response = obj['response']
                             break
-                        elif entity=="three:three" and intents == "number":
-                            response= "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
-                            if messaging_event.get('message'):
-                                response = "แล้วจะติดต่อกลับให้เร็วที่สุดค่ะ ^^"
+                        #elif entity=="three:three" and intents == "number":
+                            #response= "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
+                            #if messaging_event.get('message'):
+                                #response = "แล้วจะติดต่อกลับให้เร็วที่สุดค่ะ ^^"
                         else:
                             response = random.choice(["ลองพิมพ์ 'สวัสดี'","ทักทายค่ะ ^^ ลองพิมพ์ว่า'ดีจ้า'"])                         
                             break
 
-                        bot.send_text_message(sender_id, response)
+                    bot.send_text_message(sender_id, response)
 
                     
                     # elif entity == 'P_K:P_K' and intents == 'property_KYS' or entity == 'k1:k1' and intents == 'T_KYS':
