@@ -58,10 +58,10 @@ def webhook():
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
                             response = obj['response']
                             break
-                        #elif entity=="three:three" and intents == "number":
-                            #response= "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
-                            #if messaging_event.get('message'):
-                                #response = "แล้วจะติดต่อกลับให้เร็วที่สุดค่ะ ^^"
+                        elif entity=="three:three" and intents == "number":
+                            response= "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
+                            if messaging_event.get('message'):
+                                response = "แล้วจะติดต่อกลับให้เร็วที่สุดค่ะ ^^"
                         else:
                             response = "ลองพิมพ์ 'สวัสดี'"                        
 
