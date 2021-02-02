@@ -16,7 +16,7 @@ def wit_response(message_text):
 
 	return (entity,intents)
 
-#print(wit_response("1"))
+print(wit_response("ทุนต่าง ๆ"))
 
-#resp = client.message("เอกสาร ก ย ศ")
-#print(resp)
+resp = client.message("ทุนต่างๆ")
+print(resp)

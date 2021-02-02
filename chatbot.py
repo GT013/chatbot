@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import requests
 from flask import Flask, request
 from bot import wit_response
 from pymessenger import Bot
@@ -40,19 +41,28 @@ def webhook():
                         messaging_text = messaging_event['message']['text']
                     else:
                         messaging_text = 'no text'
-                    response = None
+                    response = None  
+                    #############################################################
                     entity, intents = wit_response(messaging_text)
+                    url = requests.get("https://raw.githubusercontent.com/GT013/information/main/infor.json")
+                    json_string = url.content
+                    infor = json.loads(json_string)
+
+                    for obj in infor:
+
+                        E1 = obj['entity']['E1']
+                        E2 = obj['entity']['E2']
+                        G1 = obj['intents']['I1']
+                        G2 = obj['intents']['I2']
+
+                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
+                            response = obj['response']
+                            break
+                        else:
+                            response = " "                          
                     
-                    with open('inform.json',encoding='utf8') as f:
-                        obj = json.load(f)
-                        for inform in obj:
-                            if inform['entity'] == entity and inform['intents'] == intents:
-                               response = inform['response']
-                               break
-                            else:
-                                response = "แชทบอทสวัสดีค่ะ\n1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาเลือกหมายเลขที่ต้องการจะสอบถาม"                        
-                    
-                    bot.send_text_message(sender_id, response)
+                        bot.send_text_message(sender_id, response)
+
                     
                     # elif entity == 'P_K:P_K' and intents == 'property_KYS' or entity == 'k1:k1' and intents == 'T_KYS':
                         # response = "ติดตามรายละเอียดเพิ่มเติมได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751617-557051c0-5791"
@@ -64,8 +74,6 @@ def webhook():
                     # response = "สามารถดูรายละเอียดได้ที่ \nhttps://office.kmitl.ac.th/osda/studentloan/#1562124714078-a8a6b529-77ac"
                     #elif entity == 'T_K:T_K' or entity == 'k4:k4' and intents == 'T_KYS':
                     #response = "สามารถติดตามกำหนดการได้ที่ https://office.kmitl.ac.th/osda/studentloan/#1562124751146-e22dcd72-ed5d"
-
-                            
 
     return "ok", 200
 
