@@ -5,7 +5,7 @@ import requests
 from flask import Flask, request
 from bot import wit_response
 from pymessenger import Bot
-
+from numpy import random
 
 chatbot = Flask(__name__)
 
@@ -43,11 +43,11 @@ def webhook():
                         messaging_text = 'no text'
                     response = None  
                     #############################################################
-                    entity, intents = wit_response(messaging_text)
-                    url = requests.get("https://raw.githubusercontent.com/GT013/information/main/infor.json")
+                    
+                    url = requests.get("https://raw.githubusercontent.com/GT013/information/main/i.json")
                     json_string = url.content
                     infor = json.loads(json_string)
-
+                    entity, intents = wit_response(messaging_text)
                     for obj in infor:
 
                         E1 = obj['entity']['E1']
@@ -59,9 +59,10 @@ def webhook():
                             response = obj['response']
                             break
                         else:
-                            response = " "                          
-                    
-                        bot.send_text_message(sender_id, response)
+                            response = random.choice(["จีจี","Haha","บ้าเอ้ย","แซ่บเวอร์"])                         
+                            break
+
+                    bot.send_text_message(sender_id, response)
 
                     
                     # elif entity == 'P_K:P_K' and intents == 'property_KYS' or entity == 'k1:k1' and intents == 'T_KYS':
