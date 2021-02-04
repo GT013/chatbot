@@ -59,6 +59,9 @@ def webhook():
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
                             response = obj['response'] 
+                        else:
+                            pass
+                        
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:                          
                             response = obj['rsp']                     
                         elif entity=="three:three" and intents == "number":
