@@ -58,12 +58,9 @@ def webhook():
                         G2 = obj['intents']['I2']
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
-                            time.sleep(0.5)
-                            response = obj['response']
-                            time.sleep(1)
-                            response = obj['rsp']
-                     
-                            #rsp = obj['rsp']
+                            response = obj['response'] 
+                        elif E1 == entity and G1 == intents or E2 == entity and G2 == intents:                          
+                            response = obj['rsp']                       
                         elif entity=="three:three" and intents == "number":
                             response= "กรุณาพิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
                         else:
