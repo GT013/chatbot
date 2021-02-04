@@ -70,6 +70,7 @@ def webhook():
 
                     
                         bot.send_text_message(sender_id, response)
+                        break
     
 
     return "ok", 200
