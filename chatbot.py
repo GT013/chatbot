@@ -61,6 +61,7 @@ def webhook():
                             response = obj['response']
                             time.sleep(1)
                             response = "55555555"
+                            break
                             #rsp = obj['rsp']
                         elif entity=="three:three" and intents == "number":
                             response= "กรุณาพิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
