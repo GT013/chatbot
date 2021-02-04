@@ -49,12 +49,12 @@ def webhook():
                     infor = json.loads(json_string)
                     entity, intents = wit_response(messaging_text)
                     
-                    if entity=="three:three" and intents == "number":
-                            response= "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
-                            if messaging_event.get('message'):
-                                response = "แล้วจะติดต่อกลับให้เร็วที่สุดค่ะ ^^"
-                            else:
-                                pass
+                    #if entity=="three:three" and intents == "number":
+                            #response= "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
+                            #if messaging_event.get('message'):
+                                #response = "แล้วจะติดต่อกลับให้เร็วที่สุดค่ะ ^^"
+                            #else:
+                                #pass
 
                     for obj in infor:
 
