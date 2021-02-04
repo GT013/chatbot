@@ -57,20 +57,16 @@ def webhook():
                         G2 = obj['intents']['I2']
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
-                            response = obj['response'] 
-                            rsp = obj['rsp']
-                            bot.send_message(sender_id,rsp)
-            
+                            response = obj['response'] and obj['rsp']
+                            #rsp = obj['rsp']
                         elif entity=="three:three" and intents == "number":
-                            response= "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
+                            response= "กรุณาพิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
                         else:
                             response = "แชทบอทสวัสดีค่ะ😃 สอบถามเรื่องอะไรดีคะ\n1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาพิมพ์หมายเลขที่ต้องการจะสอบถาม"                        
 
-                    send_message(sender_id, response)
+                    
 
-def send_message(recipient_id, response):
-    #sends user the text message provided via input response parameter
-    bot.send_text_message(recipient_id, response)
+                    bot.send_text_message(sender_id, response)
     
 
     return "ok", 200
