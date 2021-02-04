@@ -59,18 +59,16 @@ def webhook():
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
                             response = obj['response'] 
-                            break
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:                          
-                            response = obj['rsp']  
-                            break                     
+                            response = obj['rsp']                     
                         elif entity=="three:three" and intents == "number":
                             response= "กรุณาพิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
                         else:
                             response = "แชทบอทสวัสดีค่ะ😃 สอบถามเรื่องอะไรดีคะ\n1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาพิมพ์หมายเลขที่ต้องการจะสอบถาม"                        
 
                     
-                        bot.send_text_message(sender_id, response)
-                        break
+                    bot.send_text_message(sender_id, response)
+                     
     
 
     return "ok", 200
