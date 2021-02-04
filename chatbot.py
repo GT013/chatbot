@@ -49,7 +49,10 @@ def webhook():
                     json_string = url.content
                     infor = json.loads(json_string)
                     entity, intents = wit_response(messaging_text)
-                    
+
+                    if messaging_event.get('message'):
+                         response = "Hello"
+                    bot.send_text_message(sender_id, response)     
                     for obj in infor:
 
                         E1 = obj['entity']['E1']
@@ -58,7 +61,7 @@ def webhook():
                         G2 = obj['intents']['I2']
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
-                            response = obj['response'] + obj['rsp']        
+                            response = obj['response']         
                         elif entity=="three:three" and intents == "number":
                             response= "กรุณาพิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
                         else:
