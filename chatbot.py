@@ -59,7 +59,8 @@ def webhook():
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
                             response = obj['response'] 
-                        elif E1 == entity and G1 == intents or E2 == entity and G2 == intents:                          
+                            break
+                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents:                          
                             response = obj['rsp']  
                             break                     
                         elif entity=="three:three" and intents == "number":
