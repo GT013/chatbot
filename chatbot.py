@@ -42,12 +42,21 @@ def webhook():
                     else:
                         messaging_text = 'no text'
                     response = None  
+                    rsp = None
                     #############################################################
                     
                     url = requests.get("https://raw.githubusercontent.com/GT013/information/main/i.json")
                     json_string = url.content
                     infor = json.loads(json_string)
                     entity, intents = wit_response(messaging_text)
+                    
+                    if entity=="three:three" and intents == "number":
+                            response= "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
+                            if messaging_event.get('message'):
+                                response = "แล้วจะติดต่อกลับให้เร็วที่สุดค่ะ ^^"
+                            else:
+                                pass
+
                     for obj in infor:
 
                         E1 = obj['entity']['E1']
@@ -57,15 +66,13 @@ def webhook():
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
                             response = obj['response']
+                            rsp = obj['rsp']
                             break
-                        elif entity=="three:three" and intents == "number":
-                            response= "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
-                            if messaging_event.get('message'):
-                                response = "แล้วจะติดต่อกลับให้เร็วที่สุดค่ะ ^^"
+                        
                         else:
-                            response = "ลองพิมพ์ 'สวัสดี'"                        
+                            response = "แชทบอทสวัสดีค่ะ😃 สอบถามเรื่องอะไรดีคะ\n1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาพิมพ์หมายเลขที่ต้องการจะสอบถาม"                        
 
-                    bot.send_text_message(sender_id, response)
+                    bot.send_text_message(sender_id, response,rsp)
 
                     
                     # elif entity == 'P_K:P_K' and intents == 'property_KYS' or entity == 'k1:k1' and intents == 'T_KYS':
