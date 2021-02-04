@@ -44,8 +44,8 @@ def webhook():
                     response = None  
 
                     #############################################################
-                    if messaging_event.get('message'):
-                         response = "Hello"
+                    #if messaging_event.get('message'):
+                         #response = "Hello"
                     url = requests.get("https://raw.githubusercontent.com/GT013/chatbot/master/i.json")
                     json_string = url.content
                     infor = json.loads(json_string)
