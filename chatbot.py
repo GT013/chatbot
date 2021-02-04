@@ -60,7 +60,7 @@ def webhook():
                             response = obj['response'] 
                             rsp = obj['rsp']
                             bot.send_message(sender_id,rsp)
-                            break   
+            
                         elif entity=="three:three" and intents == "number":
                             response= "กรุณาพิมพ์คำถามแล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
                         else:
