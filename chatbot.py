@@ -66,13 +66,13 @@ def webhook():
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
                             response = obj['response']
-                            rsp = obj['rsp']
+                            response = obj['rsp']
                             break
                         
                         else:
                             response = "แชทบอทสวัสดีค่ะ😃 สอบถามเรื่องอะไรดีคะ\n1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาพิมพ์หมายเลขที่ต้องการจะสอบถาม"                        
 
-                    bot.send_text_message(sender_id, response,rsp)
+                    bot.send_text_message(sender_id, response)
 
                     
                     # elif entity == 'P_K:P_K' and intents == 'property_KYS' or entity == 'k1:k1' and intents == 'T_KYS':
