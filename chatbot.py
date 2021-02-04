@@ -44,15 +44,13 @@ def webhook():
                     response = None  
 
                     #############################################################
-                    
+                    if messaging_event.get('message'):
+                         response = "Hello"
                     url = requests.get("https://raw.githubusercontent.com/GT013/chatbot/master/i.json")
                     json_string = url.content
                     infor = json.loads(json_string)
                     entity, intents = wit_response(messaging_text)
 
-                    if messaging_event.get('message'):
-                         response = "Hello"
-                    bot.send_text_message(sender_id, response)     
                     for obj in infor:
 
                         E1 = obj['entity']['E1']
