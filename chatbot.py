@@ -41,7 +41,7 @@ def webhook():
                     else:
                         messaging_text = 'no text'
                     response = None  
-
+                    
                     #############################################################
                     url = requests.get("https://raw.githubusercontent.com/GT013/chatbot/master/i.json")
                     json_string = url.content
@@ -58,14 +58,22 @@ def webhook():
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
                             response = obj['response']     
                             break    
-                        elif entity=="three:three" and intents == "number":
-                            response= "กรุณาพิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดต่อกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่ 02-xxxxx"
                         else:
                             response = "แชทบอทสวัสดีค่ะ😃 สอบถามเรื่องอะไรดีคะ\n1.ทุนต่าง ๆ ของสถาบัน\n2.ทุนกยศ.\n3.ติดต่อแอดมิน\nกรุณาพิมพ์หมายเลขที่ต้องการจะสอบถาม"                        
 
                     bot.send_text_message(sender_id, response)
-                     
-    
+
+                    for obj2 in infor:
+
+                        E1 = obj2['entity']['E1']
+                        E2 = obj2['entity']['E2']
+                        G1 = obj2['intents']['I1']
+                        G2 = obj2['intents']['I2'] 
+
+                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
+                            response = obj2['rsp']
+                            break
+                    bot.send_text_message(sender_id, response)
 
     return "ok", 200
 
