@@ -79,14 +79,16 @@ def webhook():
                     answer = None
                     response3 = None
                     if entity == 'three:three' and intents == 'number':  
-                        response3 = input("พิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่\n📞โทร : 02-xxx-xxxxx\n📧 E-mail : admin@kmitl.ac.th")
-                        if messaging_event.get('message'):                              
+                        response3 = "พิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่\n📞โทร : 02-xxx-xxxxx\n📧 E-mail : admin@kmitl.ac.th"
+                        if messaging_event.get('message'):  
+                                                        
                             if messaging_event['message'].get('text'):
                                 answer = "แล้วแอดมินจะติดต่อกลับค่ะ ^^"
+                                bot.send_text_message(sender_id, answer)
                                 break
-
+                            
                     bot.send_text_message(sender_id, response3)
-                    bot.send_text_message(sender_id, answer)
+                    
                         
                         
 
