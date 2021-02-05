@@ -43,7 +43,7 @@ def webhook():
                     response = None  
                     rsp =None
                     #############################################################
-                    url = requests.get("https://raw.githubusercontent.com/GT013/chatbot/master/i.json")
+                    url = requests.get("https://raw.githubusercontent.com/GT013/information/main/i.json")
                     json_string = url.content
                     infor = json.loads(json_string)
                     entity, intents = wit_response(messaging_text)
