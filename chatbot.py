@@ -74,27 +74,6 @@ def webhook():
                             rsp = obj2['rsp']
                             break
                     bot.send_text_message(sender_id, rsp)
-                    
-                    q = "พิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่\n📞โทร : 02-xxx-xxxxx\n📧 E-mail : admin@kmitl.ac.th"
-                    answer = None
-                    response3 = None
-                    
-                    if entity == 'three:three' and intents == 'number': 
-                        try: 
-                            response3 = q
-                            bot.send_text_message(sender_id, response3)
-                            answer = "แล้วจะติดต่อกลับค่ะ ^^"  
-                            bot.send_text_message(sender_id, answer) 
-                        except(KeyboardInterrupt, EOFError, SystemExit):
-                            pass       
-                    else:
-                        pass
-
-                    
-                    
-                    
-                        
-                        
 
     return "ok", 200
 
