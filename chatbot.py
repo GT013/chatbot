@@ -83,7 +83,7 @@ def webhook():
                         if messaging_event.get('message'):                              
                             if messaging_event['message'].get('text'):
                                 answer = "แล้วแอดมินจะติดต่อกลับค่ะ ^^"
-
+                                break
 
                     bot.send_text_message(sender_id, response3)
                     bot.send_text_message(sender_id, answer)
