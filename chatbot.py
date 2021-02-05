@@ -41,7 +41,9 @@ def webhook():
                     else:
                         messaging_text = 'no text'
                     response = None  
-                    
+                    rsp =None
+                    response3 = None
+                    answer = None
                     #############################################################
                     url = requests.get("https://raw.githubusercontent.com/GT013/chatbot/master/i.json")
                     json_string = url.content
@@ -71,9 +73,18 @@ def webhook():
                         G2 = obj2['intents']['I2'] 
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
-                            response = obj2['rsp']
+                            rsp = obj2['rsp']
                             break
-                    bot.send_text_message(sender_id, response)
+                    bot.send_text_message(sender_id, rsp)
+
+                    if entity == 'three:three' and intents == 'number':
+                        response3 = input("พิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่\n📞โทร : 02-xxx-xxxxx\n📧 E-mail : admin@kmitl.ac.th")
+                        bot.send_text_message(sender_id, response3)
+                        if messaging_event.get('message'):
+                            answer = "แล้วแอดมินจะติดต่อกลับค่ะ ^^"
+                            bot.send_text_message(sender_id, answer)
+                        
+                        
 
     return "ok", 200
 
