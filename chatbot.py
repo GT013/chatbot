@@ -42,13 +42,12 @@ def webhook():
                         messaging_text = 'no text'
                     response = None  
                     rsp =None
-                   
                     #############################################################
                     url = requests.get("https://raw.githubusercontent.com/GT013/chatbot/master/i.json")
                     json_string = url.content
                     infor = json.loads(json_string)
                     entity, intents = wit_response(messaging_text)
-
+                    
                     for obj in infor:
 
                         E1 = obj['entity']['E1']
@@ -75,15 +74,19 @@ def webhook():
                             rsp = obj2['rsp']
                             break
                     bot.send_text_message(sender_id, rsp)
+                    
+                    
+                    answer = None
+                    response3 = None
+                    if entity == 'three:three' and intents == 'number':  
+                        response3 = input("พิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่\n📞โทร : 02-xxx-xxxxx\n📧 E-mail : admin@kmitl.ac.th")
+                        if messaging_event.get('message'):                              
+                            if messaging_event['message'].get('text'):
+                                answer = "แล้วแอดมินจะติดต่อกลับค่ะ ^^"
 
-                    if entity == 'three:three' and intents == 'number':
-                        response3 = None
-                        answer = None
-                        response3 = "พิมพ์คำถามทิ้งไว้แล้วแอดมินจะติดกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่\n📞โทร : 02-xxx-xxxxx\n📧 E-mail : admin@kmitl.ac.th"
-                        bot.send_text_message(sender_id, response3)
-                        if messaging_event.get('message'):
-                            answer = "แล้วแอดมินจะติดต่อกลับค่ะ ^^"
-                            bot.send_text_message(sender_id, answer)
+
+                    bot.send_text_message(sender_id, response3)
+                    bot.send_text_message(sender_id, answer)
                         
                         
 
