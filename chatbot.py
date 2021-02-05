@@ -83,9 +83,10 @@ def webhook():
                         try: 
                             response3 = q
                             bot.send_text_message(sender_id, response3)
-                        except(KeyboardInterrupt, EOFError, SystemExit):
                             answer = "แล้วจะติดต่อกลับค่ะ ^^"  
-                            bot.send_text_message(sender_id, answer)        
+                            bot.send_text_message(sender_id, answer) 
+                        except(KeyboardInterrupt, EOFError, SystemExit):
+                            pass       
                     else:
                         pass
 
