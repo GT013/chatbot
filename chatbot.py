@@ -34,7 +34,7 @@ def webhook():
 
                 sender_id = messaging_event['sender']['id']
 
-                if messaging_event.get('message'):
+                if messaging_event.get('message') or ('postback'):
                     
                     if 'text' in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
