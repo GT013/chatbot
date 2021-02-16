@@ -34,14 +34,17 @@ def webhook():
 
                 sender_id = messaging_event['sender']['id']
                                    
-                if messaging_event.get('message') or ('postback'):
+                if messaging_event.get('message'):
                     if 'text' in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
                     else:
                         messaging_text = 'no text'
                     response = None  
                     rsp =None
-                
+                if messaging_event.get('postback'):
+                    response = "แชทบอทสวัสดีค่ะ😃 สอบถามเรื่องอะไรดีคะ\nพิมพ์ 1.เรื่องทุนต่าง ๆ ของสถาบัน\nพิมพ์ 2.ทุนกยศ.\nพิมพ์ 3.ติดต่อแอดมิน\nกรุณาพิมพ์หมายเลขที่ต้องการจะสอบถาม"
+                else: 
+                    pass    
                     #############################################################
                     url = requests.get("https://raw.githubusercontent.com/GT013/information/main/i.json")
                     json_string = url.content
