@@ -33,21 +33,21 @@ def webhook():
             for messaging_event in entry['messaging']:
 
                 sender_id = messaging_event['sender']['id']
-
+                                   
                 if messaging_event.get('message') or ('postback'):
-                    
                     if 'text' in messaging_event['message']:
                         messaging_text = messaging_event['message']['text']
                     else:
                         messaging_text = 'no text'
                     response = None  
                     rsp =None
+                
                     #############################################################
                     url = requests.get("https://raw.githubusercontent.com/GT013/information/main/i.json")
                     json_string = url.content
                     infor = json.loads(json_string)
                     entity, intents = wit_response(messaging_text)
-                    
+                  
                     for obj in infor:
 
                         E1 = obj['entity']['E1']
