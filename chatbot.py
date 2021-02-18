@@ -42,20 +42,20 @@ def webhook():
                     response = None  
                     rsp =None
                     #############################################################
-                    url = requests.get("https://raw.githubusercontent.com/GT013/information/main/i.json")
+                    url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
                     json_string = url.content
                     infor = json.loads(json_string)
                     entity, intents = wit_response(messaging_text)
                   
                     for obj in infor:
 
-                        E1 = obj['entity']['E1']
-                        E2 = obj['entity']['E2']
-                        G1 = obj['intents']['I1']
-                        G2 = obj['intents']['I2']
+                        E1 = obj['entity1']
+                        E2 = obj['entity2']
+                        G1 = obj['intents1']
+                        G2 = obj['intents2']
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
-                            response = obj['response']     
+                            response = obj['response1']     
                             break    
                         else:
                             response = "แชทบอทสวัสดีค่ะ😃 สอบถามเรื่องอะไรดีคะ\nพิมพ์ 1.เรื่องทุนต่าง ๆ ของสถาบัน\nพิมพ์ 2.ทุนกยศ.\nพิมพ์ 3.ติดต่อแอดมิน\nกรุณาพิมพ์หมายเลขที่ต้องการจะสอบถาม"                        
@@ -64,13 +64,13 @@ def webhook():
 
                     for obj2 in infor:
 
-                        E1 = obj2['entity']['E1']
-                        E2 = obj2['entity']['E2']
-                        G1 = obj2['intents']['I1']
-                        G2 = obj2['intents']['I2'] 
+                        E1 = obj['entity1']
+                        E2 = obj['entity2']
+                        G1 = obj['intents1']
+                        G2 = obj['intents2'] 
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
-                            rsp = obj2['rsp']
+                            rsp = obj2['response2']
                             break
                     bot.send_text_message(sender_id, rsp)
 
