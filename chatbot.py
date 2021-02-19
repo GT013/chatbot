@@ -40,9 +40,12 @@ def webhook():
                     else:
                         messaging_text = 'no text'
                     response=None
+                    rsp = None
                     entity, intents = wit_response(messaging_text)                  
                     #############################################################
                     def chatbot():
+                        response=None
+                        rsp = None
                         url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
                         json_string = url.content
                         infor = json.loads(json_string)
@@ -76,6 +79,7 @@ def webhook():
                     if entity =="three:three" and intents == "number":
                         response = "พิมพ์คำถามไว้แล้วแอดมินจะติดกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่\n📞โทร : 02-xxx-xxxxx\n📧 E-mail : admin@kmitl.ac.th"
                         bot.send_text_message(sender_id, response)
+                        break
                     else:
                         chatbot()
 
