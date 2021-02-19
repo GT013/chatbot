@@ -56,7 +56,7 @@ def webhook():
                             G1 = obj['intents1']
                             G2 = obj['intents2']
 
-                            if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
+                            if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
                                 response = obj['response1']     
                                 break    
                             else:
