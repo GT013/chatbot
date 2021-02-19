@@ -81,6 +81,8 @@ def webhook():
                         exit()
                     elif text == "on":
                         chatbot()
+                    else :
+                        chatbot()
 
 
     return "ok", 200
