@@ -9,15 +9,14 @@ def wit_response(message_text):
 	resp = client.message(message_text)
 	entity = None
 	intents = None
-	text = None
+
 	try:
-		text = resp['text']
 		entity = list(resp['entities'])[0]
 		intents = resp['intents'][0]['name']	
 	except:
 		pass
 
-	return (entity,intents,text)
+	return (entity,intents)
 
 #print(wit_response("on"))
 
