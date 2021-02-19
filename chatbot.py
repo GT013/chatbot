@@ -50,11 +50,11 @@ def webhook():
                         response=None
                         bot.send_text_message(sender_id, response)
                     def chatbot():
-                        response=None
-                        rsp = None
                         url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
                         json_string = url.content
                         infor = json.loads(json_string)
+                        response=None
+                        rsp = None
                         for obj in infor:
 
                             E1 = obj['entity1']
@@ -88,7 +88,7 @@ def webhook():
                     elif text == "on":
                         response = "แชทบอทเปิด"
                         chatbot()
-
+                    else: pass 
                     bot.send_text_message(sender_id, response)
 
 
