@@ -19,7 +19,7 @@ def wit_response(message_text):
 
 	return (entity,intents,text)
 
-#print(wit_response("มีทุนสร้างชื่อเสียงมั้ย"))
+#print(wit_response("on"))
 
 #resp = client.message("อยากสมัครทุนเรียนดีมีเงื่อนไขอะไรบ้าง")
 #print(resp)
