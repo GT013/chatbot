@@ -70,7 +70,7 @@ def webhook():
                         G1 = obj['intents1']
                         G2 = obj['intents2'] 
 
-                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
+                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
                             rsp = obj2['response2']
                             break
                     bot.send_text_message(sender_id, rsp)

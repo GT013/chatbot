@@ -18,7 +18,7 @@ def wit_response(message_text):
 
 	return (entity,intents)
 
-#print(wit_response("on"))
+#print(wit_response("3"))
 
 #resp = client.message("อยากสมัครทุนเรียนดีมีเงื่อนไขอะไรบ้าง")
 #print(resp)
