@@ -42,49 +42,38 @@ def webhook():
                     response=None
                     rsp = None
                     entity, intents = wit_response(messaging_text)    
-                    if intents == "greeting":
-                        response = "เรามีบริการแชทบอทคอยตอบคำถามเกี่ยวกับทุนต่าง ๆ ของสถาบันและกยศ.\nพิมพ์ on เพื่อเปิดบอท\nพิมพ์ off เพื่อปิดบอท"              
-                    elif entity == "off" and intents == "off":
-                        response = "แชทบอทปิด"                        
-                    elif entity == "on" and intents == "off":
-                        response = "แชทบอทเปิด"
-                        chatbot()
-                    bot.send_text_message(sender_id, response)
+            
                     #############################################################
+                    url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
+                    json_string = url.content
+                    infor = json.loads(json_string)
                     
-                    def chatbot():
-                        entity, intents = wit_response(messaging_text)   
-                        url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
-                        json_string = url.content
-                        infor = json.loads(json_string)
-                        response=None
-                        rsp = None
-                        for obj in infor:
+                    for obj in infor:
 
-                            E1 = obj['entity1']
-                            E2 = obj['entity2']
-                            G1 = obj['intents1']
-                            G2 = obj['intents2']
+                        E1 = obj['entity1']
+                        E2 = obj['entity2']
+                        G1 = obj['intents1']
+                        G2 = obj['intents2']
 
-                            if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
-                                response = obj['response1']     
-                                break    
-                            else:
-                                response=None
-                                #response = "แชทบอทสวัสดีค่ะ😃 สอบถามเรื่องอะไรดีคะ\nพิมพ์ 1.เรื่องทุนต่าง ๆ ของสถาบัน\nพิมพ์ 2.ทุนกยศ.\nพิมพ์ 3.ติดต่อแอดมิน\nกรุณาพิมพ์หมายเลขที่ต้องการจะสอบถาม"                        
-                        bot.send_text_message(sender_id, response)
+                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
+                            response = obj['response1']     
+                            break    
+                        else:
+                            response=None
+                            #response = "แชทบอทสวัสดีค่ะ😃 สอบถามเรื่องอะไรดีคะ\nพิมพ์ 1.เรื่องทุนต่าง ๆ ของสถาบัน\nพิมพ์ 2.ทุนกยศ.\nพิมพ์ 3.ติดต่อแอดมิน\nกรุณาพิมพ์หมายเลขที่ต้องการจะสอบถาม"                        
+                    bot.send_text_message(sender_id, response)
 
-                        for obj2 in infor:
+                    for obj2 in infor:
 
-                            E1 = obj['entity1']
-                            E2 = obj['entity2']
-                            G1 = obj['intents1']
-                            G2 = obj['intents2'] 
+                        E1 = obj['entity1']
+                        E2 = obj['entity2']
+                        G1 = obj['intents1']
+                        G2 = obj['intents2'] 
 
-                            if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
-                                rsp = obj2['response2']
-                                break
-                        bot.send_text_message(sender_id, rsp)
+                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
+                            rsp = obj2['response2']
+                            break
+                    bot.send_text_message(sender_id, rsp)
 
 
 
