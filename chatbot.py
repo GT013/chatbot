@@ -39,40 +39,46 @@ def webhook():
                         messaging_text = messaging_event['message']['text']
                     else:
                         messaging_text = 'no text'
-                    response = None  
-                    rsp =None
+                    response=None
+                    entity, intents = wit_response(messaging_text)                  
                     #############################################################
-                    url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
-                    json_string = url.content
-                    infor = json.loads(json_string)
-                    entity, intents = wit_response(messaging_text)
-                  
-                    for obj in infor:
+                    def chatbot():
+                        url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
+                        json_string = url.content
+                        infor = json.loads(json_string)
+                        for obj in infor:
 
-                        E1 = obj['entity1']
-                        E2 = obj['entity2']
-                        G1 = obj['intents1']
-                        G2 = obj['intents2']
+                            E1 = obj['entity1']
+                            E2 = obj['entity2']
+                            G1 = obj['intents1']
+                            G2 = obj['intents2']
 
-                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
-                            response = obj['response1']     
-                            break    
-                        else:
-                            response = "แชทบอทสวัสดีค่ะ😃 สอบถามเรื่องอะไรดีคะ\nพิมพ์ 1.เรื่องทุนต่าง ๆ ของสถาบัน\nพิมพ์ 2.ทุนกยศ.\nพิมพ์ 3.ติดต่อแอดมิน\nกรุณาพิมพ์หมายเลขที่ต้องการจะสอบถาม"                        
+                            if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
+                                response = obj['response1']     
+                                break    
+                            else:
+                                response=None
+                                #response = "แชทบอทสวัสดีค่ะ😃 สอบถามเรื่องอะไรดีคะ\nพิมพ์ 1.เรื่องทุนต่าง ๆ ของสถาบัน\nพิมพ์ 2.ทุนกยศ.\nพิมพ์ 3.ติดต่อแอดมิน\nกรุณาพิมพ์หมายเลขที่ต้องการจะสอบถาม"                        
+                        bot.send_text_message(sender_id, response)
 
-                    bot.send_text_message(sender_id, response)
+                        for obj2 in infor:
 
-                    for obj2 in infor:
+                            E1 = obj['entity1']
+                            E2 = obj['entity2']
+                            G1 = obj['intents1']
+                            G2 = obj['intents2'] 
 
-                        E1 = obj['entity1']
-                        E2 = obj['entity2']
-                        G1 = obj['intents1']
-                        G2 = obj['intents2'] 
+                            if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
+                                rsp = obj2['response2']
+                                break
+                        bot.send_text_message(sender_id, rsp)
 
-                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents:
-                            rsp = obj2['response2']
-                            break
-                    bot.send_text_message(sender_id, rsp)
+                    if entity =="three:three" and intents == "number":
+                        response = "พิมพ์คำถามไว้แล้วแอดมินจะติดกลับให้เร็วที่สุดค่ะหรือติดต่อได้ที่\n📞โทร : 02-xxx-xxxxx\n📧 E-mail : admin@kmitl.ac.th"
+                        bot.send_text_message(sender_id, response)
+                    else:
+                        chatbot()
+
 
     return "ok", 200
 
