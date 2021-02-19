@@ -65,10 +65,10 @@ def webhook():
 
                     for obj2 in infor:
 
-                        E1 = obj['entity1']
-                        E2 = obj['entity2']
-                        G1 = obj['intents1']
-                        G2 = obj['intents2'] 
+                        E1 = obj2['entity1']
+                        E2 = obj2['entity2']
+                        G1 = obj2['intents1']
+                        G2 = obj2['intents2'] 
 
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
                             rsp = obj2['response2']
