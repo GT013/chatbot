@@ -41,10 +41,12 @@ def webhook():
                         messaging_text = 'no text'
                     response=None
                     rsp = None
-                    text = wit_response(messaging_text)                  
+                    text,entity, intents = wit_response(messaging_text)    
+                    if intents == "greeting":
+                        response = "เรามีบริการแชทบอทคอยตอบคำถามเกี่ยวกับทุนต่าง ๆ ของสถาบันและกยศ.\nพิมพ์ on เพื่อเปิดบอท\nพิมพ์ off เพื่อปิดบอท"              
+                        bot.send_text_message(sender_id, response)
                     #############################################################
                     def chatbot():
-                        entity, intents = wit_response(messaging_text)
                         response=None
                         rsp = None
                         url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
@@ -78,10 +80,12 @@ def webhook():
                         bot.send_text_message(sender_id, rsp)
 
                     if text == "off":
+                        response = "แชทบอทปิด"
+                        bot.send_text_message(sender_id, response)
                         exit()
                     elif text == "on":
-                        chatbot()
-                    else :
+                        response = "แชทบอทเปิด"
+                        bot.send_text_message(sender_id, response)
                         chatbot()
 
 
