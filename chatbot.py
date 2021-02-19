@@ -44,10 +44,11 @@ def webhook():
                     entity, intents = wit_response(messaging_text)    
                     if intents == "greeting":
                         response = "เรามีบริการแชทบอทคอยตอบคำถามเกี่ยวกับทุนต่าง ๆ ของสถาบันและกยศ.\nพิมพ์ on เพื่อเปิดบอท\nพิมพ์ off เพื่อปิดบอท"              
-                    else: pass
+        
                     #############################################################
                     
                     def chatbot():
+                        entity, intents = wit_response(messaging_text)   
                         url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
                         json_string = url.content
                         infor = json.loads(json_string)
@@ -80,12 +81,12 @@ def webhook():
                                 break
                         bot.send_text_message(sender_id, rsp)
 
-                    if entity == "off":
+                    if entity == "off" and intents == "off":
                         response = "แชทบอทปิด"                        
-                    elif entity == "on":
+                    elif entity == "on" and intents == "off":
                         response = "แชทบอทเปิด"
-                        chatbot()
-                    else: pass 
+                        chatbot(entity,intents)
+                    
                     bot.send_text_message(sender_id, response)
 
 
