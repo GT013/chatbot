@@ -44,7 +44,7 @@ def webhook():
                     text,entity, intents = wit_response(messaging_text)    
                     if intents == "greeting":
                         response = "เรามีบริการแชทบอทคอยตอบคำถามเกี่ยวกับทุนต่าง ๆ ของสถาบันและกยศ.\nพิมพ์ on เพื่อเปิดบอท\nพิมพ์ off เพื่อปิดบอท"              
-                        bot.send_text_message(sender_id, response)
+                    bot.send_text_message(sender_id, response)
                     #############################################################
                     def chatbot():
                         response=None
