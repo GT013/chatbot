@@ -85,7 +85,7 @@ def webhook():
                         response = "แชทบอทปิด"                        
                     elif entity == "on" and intents == "off":
                         response = "แชทบอทเปิด"
-                        chatbot(entity,intents)
+                        chatbot()
                     
                     bot.send_text_message(sender_id, response)
 
