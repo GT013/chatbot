@@ -18,7 +18,7 @@ def wit_response(message_text):
 
 	return (entity,intents)
 
-#print(wit_response("สอบถามทุนกยศ"))
+#print(wit_response("ทุนสนับสนุนการนำเสนอผลงานวิชาการมีขั้นตอนการสมัครยังไง"))
 
 #resp = client.message("อยากสมัครทุนเรียนดีมีเงื่อนไขอะไรบ้าง")
 #print(resp)
