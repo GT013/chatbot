@@ -24,6 +24,7 @@ def verify():
 
 
 @chatbot.route('/', methods=['POST'])
+
 def webhook():
     data = request.get_json()
     log(data)
