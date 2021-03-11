@@ -1,3 +1,4 @@
+'''  
 import json,requests
 from sys import intern
 import condata
@@ -6,7 +7,7 @@ import condata
 #infor = json.loads(json_string)
 #for obj in infor:
     #E1 = obj['entity1']
-    
+ 
 entity = input("Entity = ")
 intents = input("Intents = ")
 for data in condata.rpw:
@@ -33,3 +34,4 @@ for data2 in condata.rpw:
     else :
         pass
 #ค้นหาทีละลำดับเปรียบเทียบทีละอัน
+'''
