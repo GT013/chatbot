@@ -63,7 +63,6 @@ def webhook():
                         E2 = data[0]['entity2']
                         G1 = data[0]['intents1']
                         G2 = data[0]['intents2']
-                        R2 = data[0]['response2']
     
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
                             rsp = data[0]['response2']
