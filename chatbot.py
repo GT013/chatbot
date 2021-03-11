@@ -1,11 +1,12 @@
 import os
 import sys
 import json
+from test import R2
 import requests
 from flask import Flask, request
 from bot import wit_response
 from pymessenger import Bot
-
+import condata
 chatbot = Flask(__name__)
 
 PAGE_ACCESS_TOKEN = "EAAcLG6xt7eoBAJcXzEJMCDfHkn4h8QlU0WHaDJSnHH54G1rNQJzaZAe5GzVqBIeSDzYJ1vcAh3Q7XL03aYKG5g7l9dNzfWcz0b2wDnIwg6bSigVwgpFiVGIRO6Urtzlj2ZA1KfM5I75NKh5RzI05GMCaPAd1C8bJVAL4cyigZDZD"
@@ -45,6 +46,36 @@ def webhook():
                     entity, intents = wit_response(messaging_text)    
             
                     #############################################################
+
+                    for data in condata.rpw:
+                        E1 = data[0]['entity1']
+                        E2 = data[0]['entity2']
+                        G1 = data[0]['intents1']
+                        G2 = data[0]['intents2']
+                        R1 = data[0]['response1']
+    
+                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
+                            response = R1
+                            break
+                        else :
+                            pass
+                    bot.send_text_message(sender_id, response)
+
+                    for data in condata.rpw:
+                        E1 = data[0]['entity1']
+                        E2 = data[0]['entity2']
+                        G1 = data[0]['intents1']
+                        G2 = data[0]['intents2']
+                        R2 = data[0]['response2']
+    
+                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
+                            rsp = R2
+                            break
+                        else :
+                            pass
+                    bot.send_text_message(sender_id, rsp)
+
+                    '''
                     url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
                     json_string = url.content
                     infor = json.loads(json_string)
@@ -75,8 +106,8 @@ def webhook():
                             rsp = obj2['response2']
                             break
                     bot.send_text_message(sender_id, rsp)
-
-
+                    '''
+                 #############################################################
 
     return "ok", 200
 
