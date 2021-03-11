@@ -19,7 +19,6 @@ lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
 numpy==1.19.5
-pandas==1.2.0
 prompt-toolkit==3.0.7
 psycopg2==2.8.6
 pycodestyle==2.6.0
