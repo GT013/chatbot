@@ -58,16 +58,15 @@ def webhook():
                             response = None
                     bot.send_text_message(sender_id, response)
 
-                    for data in condata.rpw:
-                        E1 = data[0]['entity1']
-                        E2 = data[0]['entity2']
-                        G1 = data[0]['intents1']
-                        G2 = data[0]['intents2']
+                    for data2 in condata.rpw:
+                        E1 = data2[0]['entity1']
+                        E2 = data2[0]['entity2']
+                        G1 = data2[0]['intents1']
+                        G2 = data2[0]['intents2']
     
                         if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
-                            rsp = data[0]['response2']
-                            break
-                        
+                            rsp = data2[0]['response2']
+                            break   
                     bot.send_text_message(sender_id, rsp)
 
                     '''
