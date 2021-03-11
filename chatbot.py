@@ -1,8 +1,5 @@
 import os
 import sys
-import json
-from test import R2
-import requests
 from flask import Flask, request
 from bot import wit_response
 from pymessenger import Bot
