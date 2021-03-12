@@ -1,3 +1,4 @@
+'''
 import psycopg2
 from psycopg2 import Error
 try:
@@ -11,9 +12,14 @@ try:
     condb.set_client_encoding('UTF8')
     cursor = condb.cursor()
     #cursor.execute("select data->'entity1',data->'entity2',data->'intents1',data->'intents2',data->'response1',data->'response2' from botapp_botdata2;")
+    #cursor.execute("update botapp_botdata2 set data=jsonb_set(data, '{response2}', '" "'")
+    #cursor.commit()
     cursor.execute("select data from botapp_botdata2")
+    #for row in cursor.execute(select):
+        #print(row)
     rpw = cursor.fetchall()#fetchall()
     #E1 = cursor.execute("select data from botapp_botdata2;")
+    #print(rpw)
 except (Exception,Error) as error :
     print("Error while connecting to PostgreSQL", error)
-
+'''

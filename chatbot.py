@@ -3,7 +3,7 @@ import sys
 from flask import Flask, request
 from bot import wit_response
 from pymessenger import Bot
-import condata
+import requests,json
 chatbot = Flask(__name__)
 
 PAGE_ACCESS_TOKEN = "EAAcLG6xt7eoBAJcXzEJMCDfHkn4h8QlU0WHaDJSnHH54G1rNQJzaZAe5GzVqBIeSDzYJ1vcAh3Q7XL03aYKG5g7l9dNzfWcz0b2wDnIwg6bSigVwgpFiVGIRO6Urtzlj2ZA1KfM5I75NKh5RzI05GMCaPAd1C8bJVAL4cyigZDZD"
@@ -44,32 +44,7 @@ def webhook():
             
                     #############################################################
 
-                    for data in condata.rpw:
-                        E1 = data[0]['entity1']
-                        E2 = data[0]['entity2']
-                        G1 = data[0]['intents1']
-                        G2 = data[0]['intents2']
-                        
-    
-                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
-                            response = data[0]['response1']
-                            break
-                        else :
-                            response = None
-                    bot.send_text_message(sender_id, response)
-
-                    for data2 in condata.rpw:
-                        E1 = data2[0]['entity1']
-                        E2 = data2[0]['entity2']
-                        G1 = data2[0]['intents1']
-                        G2 = data2[0]['intents2']
-    
-                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
-                            rsp = data2[0]['response2']
-                            break   
-                    bot.send_text_message(sender_id, rsp)
-
-                    '''
+                    
                     url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
                     json_string = url.content
                     infor = json.loads(json_string)
@@ -100,7 +75,7 @@ def webhook():
                             rsp = obj2['response2']
                             break
                     bot.send_text_message(sender_id, rsp)
-                    '''
+                    
                  #############################################################
 
     return "ok", 200
