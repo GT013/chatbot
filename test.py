@@ -1,3 +1,4 @@
+'''
 import json,requests
 from typing import KeysView
 from re import error
@@ -33,4 +34,5 @@ for data in condata.rpw:
             print(R2)
     except KeyError:
         continue
+'''
 #ค้นหาทีละลำดับเปรียบเทียบทีละอัน
