@@ -4,7 +4,7 @@ from flask import Flask, request
 from bot import wit_response
 from pymessenger import Bot
 import condata
-import requests,json
+#import requests,json
 chatbot = Flask(__name__)
 
 PAGE_ACCESS_TOKEN = "EAAcLG6xt7eoBAJcXzEJMCDfHkn4h8QlU0WHaDJSnHH54G1rNQJzaZAe5GzVqBIeSDzYJ1vcAh3Q7XL03aYKG5g7l9dNzfWcz0b2wDnIwg6bSigVwgpFiVGIRO6Urtzlj2ZA1KfM5I75NKh5RzI05GMCaPAd1C8bJVAL4cyigZDZD"
