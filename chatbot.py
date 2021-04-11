@@ -3,6 +3,7 @@ import sys
 from flask import Flask, request
 from bot import wit_response
 from pymessenger import Bot
+import condata
 import requests,json
 chatbot = Flask(__name__)
 
@@ -43,36 +44,41 @@ def webhook():
                     
                     entity, intents = wit_response(messaging_text)    
             
-                    #############################################################                    
+                    #############################################################   
+                    '''                 
                     url = requests.get("https://raw.githubusercontent.com/GT013/information/main/databasebot.json")
                     json_string = url.content
                     infor = json.loads(json_string)
-                    
-                    for obj in infor:
+                    '''
+                    for obj in condata.rpw:
+                        try:
+                            E1 = obj['entity1']
+                            E2 = obj['entity2']
+                            G1 = obj['intents1']
+                            G2 = obj['intents2']
 
-                        E1 = obj['entity1']
-                        E2 = obj['entity2']
-                        G1 = obj['intents1']
-                        G2 = obj['intents2']
-
-                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
-                            response = obj['response1']     
-                            break    
-                        else:
-                            response= "แชทบอทสวัสดีค่ะ😃 แชทบอทคอยให้บริการตอบคำถามเกี่ยวกับทุนต่าง ๆ ของสถาบันและการกู้กยศ.ค่ะ สามารถสอบถามได้ 2 วิธีคือ \n1. พิมพ์คำถามที่ต้องการ \n2. พิมพ์หมายเลขที่ต้องการสอบถามตามหมายเลขด้านล่างนี้ค่ะ\n\n1 เรื่องทุนต่าง ๆ ของสถาบัน\n2 การกู้กยศ.\n3 ติดต่อแอดมิน"
+                            if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
+                                response = obj['response1']     
+                                break    
+                            else:
+                                response= "แชทบอทสวัสดีค่ะ😃 แชทบอทคอยให้บริการตอบคำถามเกี่ยวกับทุนต่าง ๆ ของสถาบันและการกู้กยศ.ค่ะ สามารถสอบถามได้ 2 วิธีคือ \n1. พิมพ์คำถามที่ต้องการ \n2. พิมพ์หมายเลขที่ต้องการสอบถามตามหมายเลขด้านล่างนี้ค่ะ\n\n1 เรื่องทุนต่าง ๆ ของสถาบัน\n2 การกู้กยศ.\n3 ติดต่อแอดมิน"
+                        except KeyError:
+                            continue
                                
                     bot.send_text_message(sender_id, response)
 
-                    for obj2 in infor:
+                    for obj2 in condata.rpw:
+                        try:
+                            E1 = obj2['entity1']
+                            E2 = obj2['entity2']
+                            G1 = obj2['intents1']
+                            G2 = obj2['intents2']
 
-                        E1 = obj2['entity1']
-                        E2 = obj2['entity2']
-                        G1 = obj2['intents1']
-                        G2 = obj2['intents2'] 
-
-                        if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
-                            rsp = obj2['response2']
-                            break
+                            if E1 == entity and G1 == intents or E2 == entity and G2 == intents or intents == "greeting":
+                                rsp = obj2['response2']     
+                                break                       
+                        except KeyError:
+                            continue
                     bot.send_text_message(sender_id, rsp)
                     
                  #############################################################
